@@ -1,0 +1,169 @@
+<% include ../../blocks/main_top.ejs %>
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <div class="clearfix">
+            <form class="form-inline float-right mt--1 d-none d-md-flex">
+                <button class="btn btn-primary"><i class="align-middle" data-feather="plus"></i> New project</button>
+            </form>
+            <h1 class="h3 mb-3">LOAD BOARD</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-xl-3 d-flex order-1 order-xl-2">
+                <div class="card flex-fill w-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Weekly sales</h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="py-3">
+                                <div class="chart chart-sm">
+                                    <canvas id="chartjs-dashboard-pie"></canvas>
+                                </div>
+                            </div>
+
+                            <table class="table mb-0">
+                                <tbody>
+                                <tr>
+                                    <td><i class="fas fa-square-full text-primary"></i> Direct</td>
+                                    <td class="text-right">2602</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-square-full text-warning"></i> Affiliate</td>
+                                    <td class="text-right">1253</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-square-full text-danger"></i> E-mail</td>
+                                    <td class="text-right">541</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-square-full" style="background:#E8EAED;"></i> Other</td>
+                                    <td class="text-right">1465</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        // Pie chart
+                        new Chart(document.getElementById("chartjs-dashboard-pie"), {
+                            type: 'pie',
+                            data: {
+                                labels: ["Direct", "Affiliate", "E-mail", "Other"],
+                                datasets: [{
+                                    data: [2602, 1253, 541, 1465],
+                                    backgroundColor: ["#0cc2aa", "#fcc100", "#f44455", "#E8EAED"],
+                                    borderColor: "transparent"
+                                }]
+                            },
+                            options: {
+                                responsive: !window.MSInputMethodContext,
+                                maintainAspectRatio: false,
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-12 col-md-12 col-xl-5 d-flex order-3 order-xl-3">
+                <div class="card flex-fill w-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Monthly Sales</h5>
+                    </div>
+                    <div class="card-body d-flex w-100">
+                        <div class="align-self-center chart chart-lg">
+                            <canvas id="chartjs-dashboard-bar"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        // Bar chart
+                        new Chart(document.getElementById("chartjs-dashboard-bar"), {
+                            type: 'bar',
+                            data: {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                datasets: [{
+                                    label: "Last year",
+                                    backgroundColor: "#0cc2aa",
+                                    borderColor: "#0cc2aa",
+                                    hoverBackgroundColor: "#0cc2aa",
+                                    hoverBorderColor: "#0cc2aa",
+                                    data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79]
+                                }, {
+                                    label: "This year",
+                                    backgroundColor: "#E8EAED",
+                                    borderColor: "#E8EAED",
+                                    hoverBackgroundColor: "#E8EAED",
+                                    hoverBorderColor: "#E8EAED",
+                                    data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68]
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                legend: {
+                                    display: false
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false
+                                        },
+                                        stacked: false,
+                                        ticks: {
+                                            stepSize: 20
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        barPercentage: .75,
+                                        categoryPercentage: .5,
+                                        stacked: false,
+                                        gridLines: {
+                                            color: "transparent"
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 d-flex order-2 order-xl-1">
+                <div class="card flex-fill">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Calendar</h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="chart">
+                                <div id="datetimepicker-dashboard"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        $('#datetimepicker-dashboard').datetimepicker({
+                            inline: true,
+                            sideBySide: false,
+                            format: 'L'
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<% include ../../blocks/main_footer.ejs %>
+

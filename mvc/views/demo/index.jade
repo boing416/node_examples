@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    p a: #{a}
+    p user: #{username}
+    h2  Product INFO
+    table(class="table")
+      tr
+        td ID
+        td #{product.id}
+      tr
+        td NAME
+        td #{product.name}
+      tr
+        td PHOTO
+        td
+          img(src = "images/#{product.photo}" width=50)
+
+    h2  Product LIST
+    table(class="table")
+      tr
+        th ID
+        th NAME
+        th PRICE
+        th PHOTO
+      each p in products
+        tr
+          td #{p.id}
+          td #{p.name}
+          td #{p.price}
+          td
+            img(src = "images/#{p.photo}" width=50)
