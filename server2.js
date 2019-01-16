@@ -28,7 +28,7 @@ var server = http.createServer(function (req, res) {
 
 });
 
-server.listen(3000, '64.188.7.154');
+server.listen(3000, '111.111.111.111');
 
 console.log("LESTEN PORT 3000");
 
